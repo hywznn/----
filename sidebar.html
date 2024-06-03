@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/sidebarstyle.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <header class="sidebar-header">
+          <button
+            type="button"
+            class="sidebar-burger"
+            onclick="toggleSidebar()"
+          ></button>
+          <a href="https://www.instagram.com/hywznn/" target="_blank">
+            <img src="assets/blocklord-logo.png" class="sidebar-logo" />
+          </a>        </header>
+        <nav class="sidebar-nav">
+          <button type="button" onclick="navigateTo('main.html')">
+            <img src="assets/icon-home.svg" />
+            <span>Home</span>
+          </button>
+          <button type="button" onclick="navigateTo('portfolio.html')">
+            <img src="assets/icon-levels.svg" />
+            <span style="animation-delay: 0.2s">portfolio</span>
+          </button>
+          <button type="button" onclick="navigateTo('guestbook.html')">
+            <img src="assets/icon-accounts.svg" />
+            <span style="animation-delay: 0.3s">guestbook</span>
+          </button>
+        </nav>
+        <footer class="sidebar-footer">
+          <a href="https://github.com/hywznn" target="_blank">
+            <button type="button">
+              <img src="../assets/iconmonstr-github-1.svg" />
+              <span>GITHUB</span>
+            </button>
+          </a>
+        </footer>
+      </div>
+    </aside>
+
+    <script type="text/javascript">
+      const toggleSidebar = () => document.body.classList.toggle("open");
+
+      function navigateTo(page) {
+        window.parent.location.href = page;
+      }
+    </script>
+  </body>
+</html>

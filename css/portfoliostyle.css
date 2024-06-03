@@ -1,0 +1,191 @@
+@charset "utf-8";
+.sidebar-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    margin: 0;
+    font-family: "Euclid Circular A", "Poppins";
+    color: #ddfdfd;
+    background: #050808;
+    overflow: hidden; /* 스크롤바 제거 */
+    display: flex; /* 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 전체 높이 */
+}
+
+.sidebar-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.portfolio {
+    padding: 20px;
+    background-color: #050808;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center;
+    width: 90%; /* 너비 조정 */
+    max-width: 1200px;
+    height: 100%;
+}
+
+.portfolio h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+    height: 70vh;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    gap: 20px;
+}
+
+.portfolio-item {
+    flex: 0 0 calc(33.33% - 20px);
+    text-align: center;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.portfolio-item h3 {
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+.portfolio-item p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+.btnPrev, .btnNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease;
+}
+
+.btnPrev:hover, .btnNext:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.btnPrev {
+    left: 10px;
+}
+
+.btnNext {
+    right: 10px;
+}
+
+.portfolio-item.center {
+    height: 100%; /* 기본 높이에 맞추기 */
+    border-radius: 20px;
+    z-index: 1;
+}
+
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover, .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Pagination 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+}
+
+.pagination .dot_active {
+    background: #fff;
+}
