@@ -1,3 +1,10 @@
+@charset "utf-8";
+.sidebar-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     margin: 0;
     font-family: "Euclid Circular A", "Poppins";
@@ -14,27 +21,26 @@ body {
         height: 100%;
       }
 
-  .banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column-reverse;
-    gap: 50px;
-    padding: 0px;
-    text-align: center;
-    margin-left: 0px;
-    height: 100vh;
-    background: #050808;
-    overflow: hidden; /* To remove the scrollbar */
-  }
-
-  .sidebar-banner{
-    display: flex;
-    justify-self:flex-start;
-    height: auto;
-    width: max-content;
-    overflow: hidden; /* To remove the scrollbar */
-  }
+      .banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 50px;
+        padding: 0;
+        text-align: center;
+        margin-left: 0;
+        height: 100vh;
+        background: #050808;
+      }
+    
+      .sidebar-banner {
+        display: flex !important;
+        justify-self: flex-start !important;
+        height: auto !important;
+        width: auto !important;
+    }
+    
 
   .banner-content{
     display: grid;

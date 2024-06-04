@@ -1,11 +1,4 @@
-* {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  background: #121212;
-}
 
 button {
   background: transparent;
@@ -13,6 +6,7 @@ button {
   padding: 0;
   cursor: pointer;
 }
+
 
 .sidebar {
   position: absolute;
@@ -26,9 +20,7 @@ button {
   overflow: hidden; /* To remove the scrollbar */
 }
 
-.sidebar:-webkit-scrollbar {
-  display: none;
-}
+
 
 body.open .sidebar {
   width: 260px;
@@ -104,6 +96,10 @@ body.open .sidebar-logo {
   color: #f9f9f9;
   opacity: 0;
   transition: 0.3s;
+}
+
+.sidebar-footer {
+  padding-bottom: 20px; /* 필요에 따라 값을 조정 */
 }
 
 @keyframes appear {
