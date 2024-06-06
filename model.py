@@ -1,5 +1,8 @@
 from pydantic import BaseModel
 
-class todo(BaseModel):
+class Entry(BaseModel):
     id: int
-    item: str
+    nickname: str
+    message: str
+    date: str
+    time: str
