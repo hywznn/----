@@ -17,8 +17,8 @@
 - **Poppins** (Font)
   - [Poppins on Google Fonts](https://fonts.google.com/specimen/Poppins)
 
-- **GitHub Pages** (Hosting)
-  - [GitHub Pages]([https://pages.github.com/](https://github.com/frontend-joe))
+- **GitHub Pages** 
+  - frontend-joe (Joe) [https://pages.github.com/](https://github.com/frontend-joe))
 
 - ** github svg file**
   - [github etc. svg file] ((https://iconmonstr.com/)) 
