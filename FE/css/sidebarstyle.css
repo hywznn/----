@@ -1,32 +1,28 @@
-
-
-button {
+.custom-button {
   background: transparent;
   border: 0;
   padding: 0;
   cursor: pointer;
+  outline: none; /* Ensure no outline on focus */
 }
 
-
-.sidebar {
+.custom-sidebar {
   position: absolute;
   overflow: hidden;
   top: 0;
   left: 0;
   width: 72px;
   height: 100%;
-  background: #D3C1A5;
+  background: #d3c1a5;
   transition: width 0.4s;
   overflow: hidden; /* To remove the scrollbar */
 }
 
-
-
-body.open .sidebar {
+body.open .custom-sidebar {
   width: 260px;
 }
 
-.sidebar-inner {
+.custom-sidebar-inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +33,7 @@ body.open .sidebar {
   padding-bottom: 10px;
 }
 
-.sidebar-header {
+.custom-sidebar-header {
   display: flex;
   align-items: center;
   height: 72px;
@@ -45,35 +41,37 @@ body.open .sidebar {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.sidebar-burger {
+.custom-sidebar-burger {
   width: 72px;
   height: 72px;
   display: grid;
   place-items: center;
   background: url(../assets/icon-burger.svg) no-repeat center center;
   transition: 0.3s;
+  background-color: transparent; /* Match the sidebar background */
+  border: none; /* Remove any border */
 }
 
-body.open .sidebar-burger {
+body.open .custom-sidebar-burger {
   background: url(../assets/icon-close.svg) no-repeat center center;
 }
 
-.sidebar-logo {
+.custom-sidebar-logo {
   height: 20px;
   opacity: 0;
   transition: 0.3s;
 }
 
-body.open .sidebar-logo {
+body.open .custom-sidebar-logo {
   opacity: 1;
 }
 
-.sidebar-nav {
+.custom-sidebar-nav {
   padding-top: 10px;
   flex: 1 1 auto;
 }
 
-.sidebar button {
+.custom-sidebar button {
   display: flex;
   gap: 25px;
   align-items: center;
@@ -85,24 +83,26 @@ body.open .sidebar-logo {
   letter-spacing: 2px;
   line-height: 1;
   padding: 0 25px;
+  background-color: transparent; /* Match the sidebar background */
+  border: none; /* Remove any border */
+  outline: none; /* Ensure no outline on focus */
 }
 
-.sidebar button > img {
+.custom-sidebar button > img {
   width: 24px;
   height: 24px;
 }
 
-.sidebar button > span {
-  color: #f9f9f9;
+.custom-sidebar button > span {
   opacity: 0;
   transition: 0.3s;
 }
 
-.sidebar-footer {
+.custom-sidebar-footer {
   padding-bottom: 20px; /* 필요에 따라 값을 조정 */
 }
 
-@keyframes appear {
+@keyframes custom-appear {
   0% {
     opacity: 0;
     translate: 0 10px;
@@ -113,7 +113,7 @@ body.open .sidebar-logo {
   }
 }
 
-body.open .sidebar button > span {
+body.open .custom-sidebar button > span {
   opacity: 1;
-  animation: appear 0.3s both;
+  animation: custom-appear 0.3s both;
 }

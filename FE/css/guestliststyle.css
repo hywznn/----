@@ -1,0 +1,113 @@
+@charset "utf-8";
+.sidebar-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Euclid Circular A", "Poppins";
+    overflow: hidden; /* 스크롤바 제거 */
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* 사이드바와 메인 콘텐츠 */
+    grid-template-rows: 100px 1fr; /* 상단 입력 폼과 하단 방명록 */
+    height: 100vh;
+    overflow: hidden; /* 스크롤바 제거 */
+}
+
+.sidebar-banner {
+    grid-row: 1 / 3; /* 사이드바는 전체 행을 차지 */
+    overflow: hidden; /* 스크롤바 제거 */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #050808;
+    color: #fff;
+    grid-row: 1 / 3; /* 메인 콘텐츠는 전체 행을 차지 */
+    overflow: hidden; /* 스크롤바 제거 */
+}
+
+.main-content h1 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.entry-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.entry-form input {
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.entry-form button {
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #3e3e3e;
+    color: #ffffff;
+    border: none;
+}
+
+#guestbook {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+    padding: 20px;
+}
+
+.speech-bubble {
+    background: #2e2e2e;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #2e2e2e transparent transparent transparent;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.delete-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+}
