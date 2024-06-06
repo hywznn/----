@@ -1,15 +1,12 @@
 # Dockerfile for frontend
 FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install
+COPY . /app/
 
-COPY . ./
 RUN npm run build
 
-EXPOSE 8081
+EXPOSE 80
 
-CMD ["npx", "serve", "-s", "build", "-l", "3000"]
+CMD python main.py
