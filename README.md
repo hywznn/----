@@ -8,8 +8,8 @@
 ## 특징
 - 공통 : sidebar
 - HOME : navbar, svg 활용
-- PORTFOLIO : carousel, pagination
-- GEUSTBOOK : grid형태로 방명록 작성 / fastapi
+- PORTFOLIO : carousel(자동 card 넘김), pagination
+- GEUSTBOOK : grid형태로 방명록 작성(말풍선 css로 진짜 풍선처럼 두둥실) / fastapi
 
 
 ## 활용한 오픈소스 목록
