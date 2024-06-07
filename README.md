@@ -2,7 +2,8 @@
 
 - **Student ID**: 2020204040
 - **Name**: 최현준
-- **Name**: (OPTIONAL) : 1. 방명록 구현 O / 2. DOCKER 배포 O 
+- **(OPTIONAL) : 1. 방명록 구현 O / 2. DOCKER 배포 O
+- **배포주소 : http://52.71.108.9/
 
 ## 특징
 - 공통 : sidebar
