@@ -11,6 +11,18 @@ class Entry(BaseModel):
     date: str
     time: str
 
+app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 entry_router = APIRouter()
 
 entries: List[Entry] = []
@@ -42,23 +54,11 @@ async def delete_entry(entry_id: int = Path(..., title="The ID of the entry to d
             return {"msg": f"Entry with ID {entry_id} deleted successfully"}
     raise HTTPException(status_code=404, detail="Entry with supplied ID doesn't exist")
 
-app = FastAPI()
-
-origins = ["*"]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.include_router(entry_router)
 
 @app.get("/")
 async def welcome() -> dict:
     return {"msg": "hello world?"}
-
-app.include_router(entry_router)
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

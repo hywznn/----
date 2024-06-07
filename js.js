@@ -1,17 +1,12 @@
+const host = "http://localhost:8080";  // 또는 서버의 실제 IP 주소
+const guestbookContainer = document.querySelector('#guestbook');
 
-
-
-
-const host = "http://52.71.108.9:8080";
-let entryId = 0;
-
-console.log('JavaScript Loaded'); // JS 로드 확인
-
+// 방명록 항목 불러오기
 function getEntries() {
-    console.log('Fetching entries...'); // 디버깅 로그
+    console.log('Fetching entries...');
     axios.get(`${host}/entries`)
         .then(response => {
-            console.log('Entries fetched:', response.data.entries); // 디버깅 로그
+            console.log('Entries fetched:', response.data);
             renderEntries(response.data.entries);
         })
         .catch(error => {
@@ -19,72 +14,67 @@ function getEntries() {
         });
 }
 
+// 방명록 항목 렌더링
 function renderEntries(entries) {
-    console.log('Rendering entries:', entries); // 디버깅 로그
-    const guestbook = document.getElementById('guestbook');
-    guestbook.innerHTML = ''; // 초기화
+    guestbookContainer.innerHTML = ''; // guestbookContainer 초기화
     entries.forEach(entry => {
-        addEntryToDOM(entry);
+        const entryDiv = document.createElement('div');
+        entryDiv.classList.add('speech-bubble');
+        entryDiv.innerHTML = `<p><strong>${entry.nickname}:</strong> ${entry.message}</p>
+                              <p class="entry-date">${entry.date} ${entry.time}</p>`;
+
+        // 삭제 버튼 생성 및 이벤트 처리
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', function () {
+            deleteEntry(entry.id);
+        });
+
+        entryDiv.appendChild(deleteBtn);
+        guestbookContainer.appendChild(entryDiv);
     });
 }
 
-function addEntryToDOM(entryData) {
-    console.log('Adding entry to DOM:', entryData); // 디버깅 로그
-    const entry = document.createElement('div');
-    entry.classList.add('speech-bubble');
-    entry.id = `entry-${entryData.id}`;
-
-    entry.innerHTML = `
-        <p><strong>${entryData.nickname}</strong></p>
-        <p>${entryData.message}</p>
-        <p>${entryData.date} ${entryData.time}</p>
-        <button class="delete-btn" onclick="deleteEntry('${entryData.id}')">Delete</button>
-    `;
-
-    const guestbook = document.getElementById('guestbook');
-    guestbook.appendChild(entry);
-
-    reorderEntries(); // 요소 추가 후 재정렬
-}
-
+// 방명록 항목 추가
 function addEntry() {
-    console.log('Adding new entry...'); // 디버깅 로그
-    const nickname = document.getElementById('nickname').value;
-    const message = document.getElementById('message').value;
+    const name = document.querySelector('#nickname').value.trim();
+    const message = document.querySelector('#message').value.trim();
+    if (name === '' || message === '') return;
 
-    if (nickname && message) {
-        const date = new Date().toLocaleDateString();
-        const time = new Date().toLocaleTimeString();
-        const entryData = {
-            id: entryId++, // 클라이언트 측에서 ID 생성
-            nickname: nickname,
-            message: message,
-            date: date,
-            time: time
-        };
+    const now = new Date();
+    const dateString = now.toLocaleDateString();
+    const timeString = now.toLocaleTimeString();
 
-        console.log('Entry Data to be sent:', entryData); // 서버로 보낼 데이터 로그
+    const newEntry = {
+        id: 0,
+        nickname: name,
+        message: message,
+        date: dateString,
+        time: timeString
+    };
 
-        axios.post(`${host}/entries`, entryData)
-            .then(response => {
-                console.log('Server Response:', response.data); // 서버 응답 로그
-                document.getElementById('nickname').value = '';
-                document.getElementById('message').value = '';
-                getEntries();
-            })
-            .catch(error => {
-                console.error('Error adding entry:', error);
-            });
-    } else {
-        alert('Please enter both nickname and message');
-    }
+    console.log('Adding entry:', newEntry);
+
+    axios.post(`${host}/entries`, newEntry)
+        .then(response => {
+            console.log('New Entry Added:', response.data);
+            document.querySelector('#nickname').value = '';
+            document.querySelector('#message').value = '';
+            getEntries();
+        })
+        .catch(error => {
+            console.error('Error adding entry:', error);
+        });
 }
 
-function deleteEntry(id) {
-    console.log('Deleting entry with id:', id); // 디버깅 로그
-    axios.delete(`${host}/entries/${id}`)
+// 방명록 항목 삭제
+function deleteEntry(entryId) {
+    console.log('Deleting entry with ID:', entryId);
+
+    axios.delete(`${host}/entries/${entryId}`)
         .then(response => {
-            console.log('Entry deleted'); // 디버깅 로그
+            console.log('Entry Deleted:', response.data);
             getEntries();
         })
         .catch(error => {
@@ -92,27 +82,12 @@ function deleteEntry(id) {
         });
 }
 
-function reorderEntries() {
-    console.log('Reordering entries'); // 디버깅 로그
-    const guestbook = document.getElementById('guestbook');
-    const entries = Array.from(guestbook.children);
-
-    entries.forEach((entry, index) => {
-        const row = Math.floor(index / 4) + 1;
-        const col = index % 4 + 1;
-        entry.style.gridRow = row;
-        entry.style.gridColumn = col;
-    });
-}
-
-document.getElementById('nickname').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        addEntry();
-    }
+// 페이지 로드 시 방명록 항목 불러오기
+window.addEventListener('DOMContentLoaded', function () {
+    getEntries();
 });
 
-window.addEventListener('DOMContentLoaded', function () {
-    console.log('DOM fully loaded and parsed'); // 디버깅 로그
-    getEntries();
+// 폼 제출 처리
+document.querySelector('.entry-form button').addEventListener('click', function () {
+    addEntry();
 });
