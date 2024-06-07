@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from entry import entry_router  # Import the entry router
-
+import uvicorn
 app = FastAPI()
 
 origins = ["*"]
