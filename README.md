@@ -10,7 +10,7 @@
 - HOME : navbar, svg 활용
 - PORTFOLIO : carousel(자동 card 넘김), pagination
 - GEUSTBOOK : grid형태로 방명록 작성(말풍선 css로 진짜 풍선처럼 두둥실) / fastapi
-
+<img width="584" alt="스크린샷 2024-06-08 오전 2 05 05" src="https://github.com/hywznn/oss_pp/assets/129842279/efd7a504-fc8e-416f-a024-bb9b1079deeb">
 
 ## 활용한 오픈소스 목록
 - **Euclid Circular A** (Font)
