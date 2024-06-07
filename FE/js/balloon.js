@@ -1,4 +1,4 @@
-const host = "http://54.210.3.83:80";
+const host = "http://54.210.3.83:8080";
 let entryId = 0;
 
 function getEntries() {
